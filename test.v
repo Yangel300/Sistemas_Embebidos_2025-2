@@ -1,23 +1,23 @@
-    // Example: Generating a clock with a specific period
-    module my_clock_generator (
-        input wire clk_in,       // Input reference clock (e.g., BUS_CLK)
-        output wire clk_out     // Generated clock output
-    );
+module led_blinker (
+    input wire clk_in,     // Connect to BUS_CLK or another clock source
+    output wire led        // Connect to P2_1
+);
 
-    parameter CLOCK_DIVISOR = 10; // Adjust for desired frequency
+    parameter CLOCK_DIVISOR = 50000000; // Adjust this for 1Hz blinking with 100 MHz clock
 
     reg [31:0] counter = 0;
-    reg clk_out_reg = 0;
+    reg led_reg = 0;
 
     always @(posedge clk_in) begin
         if (counter == (CLOCK_DIVISOR - 1)) begin
-            clk_out_reg <= ~clk_out_reg;
+            led_reg <= ~led_reg;
             counter <= 0;
         end else begin
             counter <= counter + 1;
         end
     end
 
-    assign clk_out = clk_out_reg;
+    assign led = led_reg;
 
-    endmodule
+endmodule
+
