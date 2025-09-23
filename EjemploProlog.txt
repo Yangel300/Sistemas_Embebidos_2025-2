@@ -23,3 +23,9 @@ l3=len(list(prolog.query("mother('Marjorie Jacueline Simpson',X)")))
 for soln in prolog.query("mother(X,Y)"):
     print(soln["X"], "is the mother of", soln["Y"])
  
+
+siblings(A,B):-
+    Father(A)=father(B);
+    mother(A)=mother(B).
+
+parents(A)=(father(A),mother(A))
