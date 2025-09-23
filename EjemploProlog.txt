@@ -1,0 +1,25 @@
+!pip install git+https://github.com/yuce/pyswip@master#egg=pyswip
+from pyswip import Prolog
+prolog = Prolog()
+prolog.assertz("mother('Jacqueline Ingrid Bouvier','Patty Bouvier')")
+prolog.assertz("mother('Jacqueline Ingrid Bouvier','Selma Bouvier')")
+prolog.assertz("mother('Jacqueline Ingrid Bouvier','Marjorie Jacueline Simpson')")
+list(prolog.query("mother('Jacqueline Ingrid Bouvier',X)")) == [{'X': 'Patty Bouvier'}, {'X': 'Selma Bouvier'}, {'X': 'Marjorie Jacueline Simpson'}]
+prolog.assertz("mother('Mona Simpson','Homer Jay Simpson')")
+prolog.assertz("mother('Mona Simpson','Abbey Simpson')")
+prolog.assertz("mother('Mona Simpson','Herbet Herb Powel')")
+list(prolog.query("mother('Mona Simpson',X)")) == [{'X': 'Homer Jay Simpson'}, {'X': 'Abbey Simpson'}, {'X': 'Herbet Herb Powel'}]
+prolog.assertz("mother('Marjorie Jacueline Simpson','Bartholomew JoJo Simpson')")
+prolog.assertz("mother('Marjorie Jacueline Simpson','Lisa Marie Simpson')")
+prolog.assertz("mother('Marjorie Jacueline Simpson','Maggie Simpson')")
+list(prolog.query("mother('Marjorie Jacueline Simpson',X)")) == [{'X': 'Bartholomew JoJo Simpson'}, {'X': 'Lisa Marie Simpson'}, {'X': 'Maggie Simpson'}]
+c1=0
+c2=0
+c3=0
+l1=len(list(prolog.query("mother('Jacqueline Ingrid Bouvier',X)")))
+l2=len(list(prolog.query("mother('Mona Simpson',X)")))
+l3=len(list(prolog.query("mother('Marjorie Jacueline Simpson',X)")))
+#print(l1,l2,l3)
+for soln in prolog.query("mother(X,Y)"):
+    print(soln["X"], "is the mother of", soln["Y"])
+ 
