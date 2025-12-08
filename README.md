@@ -10,7 +10,9 @@
 ##Lidar
 * Detección de obstaculos a 6 metros.
 ##Text-to-Speech(TTS)
-* Supertonic.
+* ~~Supertonic.~~
+* ~~Coqui.~~
+* Pyttsx3.
 
 ##Speech-to-text(STT)
 * Whisper X.
