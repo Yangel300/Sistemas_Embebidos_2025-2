@@ -9,10 +9,10 @@ import time  # Para la espera de unos segundos
 # =========================
 # CONFIGURACIÓN GENERAL
 # =========================
-def parse_args():
+def parse_args(clave="hola andador", duracion=5):
     parser = argparse.ArgumentParser(description="Sistema de escucha con palabra clave.")
-    parser.add_argument('--palabra_clave', type=str, default="hola andador", help="Palabra clave a detectar")
-    parser.add_argument('--duracion', type=int, default=5, help="Duración de escucha en segundos")
+    parser.add_argument('--palabra_clave', type=str, default=clave, help="Palabra clave a detectar")
+    parser.add_argument('--duracion', type=int, default=duracion, help="Duración de escucha en segundos")
     return parser.parse_args()
 
 args = parse_args()
